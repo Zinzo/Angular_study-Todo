@@ -5,8 +5,6 @@ import {TodoVO} from "./domain/todo.vo";
 
 @Injectable()
 export class UserService {
-  todoList: TodoVO[];
-
   constructor( private http: HttpClient) { }
 
   getTodoList():Observable<TodoVO[]> {

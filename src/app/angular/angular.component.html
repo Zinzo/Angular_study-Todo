@@ -1,3 +1,4 @@
+
 <mat-card>
   <mat-card-header>
     <mat-card-title>
@@ -6,7 +7,27 @@
   </mat-card-header>
 
   <mat-card-content>
-    <div class="table">
+    <form (sumbit)="addTodo()" ngNativeValidate>
+      <div fxLayout="row">
+        <input type="text"
+               placeholder="할일"
+               id="input_todo"
+               fxFlex="4 1 auto"
+               [(ngModel)]="newTodo.todo"
+               name="todo"
+               required>
+
+        <button class="active"
+                type="submit"
+                fxFlex="1 1 auto"
+                >
+                  추가
+        </button>
+
+      </div>
+    </form>
+
+    <div class="table mt-2">
       <div class="tr">
         <div class="th">완료</div>
         <div class="th">할일</div>

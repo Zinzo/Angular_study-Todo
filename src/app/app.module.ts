@@ -8,12 +8,18 @@ import { HomeComponent } from './home/home.component';
 import { JqueryComponent } from './jquery/jquery.component';
 import { AngularComponent } from './angular/angular.component';
 import {RouterModule, Routes} from '@angular/router';
-import {MatButtonModule, MatCardModule, MatIconModule, MatMenuModule, MatToolbarModule} from '@angular/material';
+import {
+  MatButtonModule, MatCardModule, MatCheckboxModule, MatFormFieldModule, MatIconModule,
+  MatInputModule, MatMenuModule,
+  MatToolbarModule
+} from '@angular/material';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {FlexLayoutModule} from '@angular/flex-layout';
 import {UserService} from "./user.service";
 import {HttpClientModule} from "@angular/common/http";
 import {FormsModule} from "@angular/forms";
+import { HighlightDirective } from './highlight.directive';
+import { MydatePipe } from './mydate.pipe';
 
 const route: Routes = [
   {path: '', component: IndexComponent, children: [
@@ -21,7 +27,7 @@ const route: Routes = [
       {path: 'jquery', component: JqueryComponent},
       {path: 'angular', component: AngularComponent},
     ]}, // 사용자 사이트
-  // {path: 'admin', loadChildren: 'app/admin/admin.module#AdminModule'}, // 관리자 사이트, lazyloading
+  {path: 'admin', loadChildren: 'app/admin/admin.module#AdminModule'}, // 관리자 사이트, lazyloading
 ];
 
 @NgModule({
@@ -30,12 +36,16 @@ const route: Routes = [
     IndexComponent,
     HomeComponent,
     JqueryComponent,
+    HighlightDirective,
+    MydatePipe,
     AngularComponent
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     FormsModule,
+    MatFormFieldModule,
+    MatInputModule,
     RouterModule.forRoot(route),
     HttpClientModule,
     FlexLayoutModule,
@@ -43,7 +53,8 @@ const route: Routes = [
     MatMenuModule,
     MatIconModule,
     MatButtonModule,
-    MatCardModule
+    MatCardModule,
+    MatCheckboxModule,
   ],
   providers: [UserService],
   bootstrap: [AppComponent]
